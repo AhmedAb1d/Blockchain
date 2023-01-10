@@ -19,7 +19,7 @@ function App() {
 
   const getBlockchain = async () => {
     await axios
-      .get("/api/chain")
+      .get("http://localhost:5000/api/chain")
       .then((res) => {
         setChain(res.data);
         console.log(res.data.chain);
@@ -31,7 +31,7 @@ function App() {
 
   const addTransaction = () => {
     axios
-      .post("/api/transactions/new", {
+      .post("http://localhost:5000/api/transactions/new", {
         transaction: "new",
       })
       .then((res) => {

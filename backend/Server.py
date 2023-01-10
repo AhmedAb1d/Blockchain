@@ -1,20 +1,26 @@
+import os
 from flask import Flask, request, send_from_directory
 from flask_restful import Api
 from flask_cors import CORS
 from Blockchain import Blockchain
 import json
 
-app = Flask(__name__, static_folder='../frontend/build')
-
+app = Flask(__name__)
 CORS(app)
-
 blockchain = Blockchain()
 
 api = Api(app)
 
-# @app.route("/<path:path>")
-# def serve(path):
-#     return send_from_directory(app.static_folder,path)
+frontend_build_path = os.path.join(os.path.dirname(__file__), '../frontend/build')
+
+
+@app.route("/")
+def index():
+    return send_from_directory(frontend_build_path, "index.html")
+
+@app.route("/<path:filename>")
+def serve_static(filename):
+    return send_from_directory(frontend_build_path, filename)
 
 @app.route('/api/chain', methods=['GET'])
 def get_chain():
