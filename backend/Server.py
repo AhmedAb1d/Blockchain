@@ -34,6 +34,11 @@ def get_chain():
         }
     )
 
+@app.route('/api/clear', methods=['POST'])
+def clear_chain():
+    blockchain.clear_blockchain()
+    return "Blockcahin cleared"
+
 @app.route('/api/transactions/new', methods=['POST'])
 def new_transaction():
     blockchain.add_new_transaction(request.get_json())

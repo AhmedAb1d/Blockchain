@@ -45,6 +45,11 @@ class Blockchain:
 
     def add_new_transaction(self, transaction):
         self.unconfirmed_transactions.append(transaction)
+    
+    def clear_blockchain(self):
+        self.unconfirmed_transactions = []
+        self.chain = []
+        self.create_genesis_block()
 
     def mine(self):
         if not self.unconfirmed_transactions:
