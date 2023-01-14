@@ -6,21 +6,21 @@ from Blockchain import Blockchain
 import json
 
 app = Flask(__name__, static_folder='../frontend/build')
-CORS(app)
+
+CORS(app,resources={r"*": {"origins": "*"}})
+
 blockchain = Blockchain()
 
 api = Api(app)
 
-
-# Serve React App
 @app.route('/', defaults={'path': ''})
+
 @app.route('/<path:path>')
 def serve(path):
     if path != "" and os.path.exists(app.static_folder + '/' + path):
         return send_from_directory(app.static_folder, path)
     else:
         return send_from_directory(app.static_folder, 'index.html')
-
 
 @app.route('/api/chain', methods=['GET'])
 def get_chain():
@@ -47,4 +47,4 @@ def new_transaction():
         blockchain.mine()
     return "Transaction added to the block"
 
-app.run(debug=True, port=5000,threaded=True)
+app.run(debug=True, port=5000, host="0.0.0.0")

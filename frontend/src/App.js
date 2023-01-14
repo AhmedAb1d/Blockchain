@@ -19,7 +19,6 @@ function App() {
   const handleOpen = (block) => {
     setOpen(true);
     setBlockData(block);
-    console.log(blockData);
   };
   const handleClose = () => setOpen(false);
 
@@ -29,7 +28,7 @@ function App() {
 
   const getBlockchain = async () => {
     await axios
-      .get("http://localhost:5000/api/chain")
+      .get("/api/chain")
       .then((res) => {
         setChain(res.data);
       })
@@ -40,14 +39,14 @@ function App() {
 
   const handleReload = async () => {
     await axios
-      .post("http://localhost:5000/api/clear")
+      .post("/api/clear")
       .then(() => getBlockchain())
       .catch((error) => console.log(error));
   };
 
   const addTransaction = () => {
     axios
-      .post("http://localhost:5000/api/transactions/new", {
+      .post("/api/transactions/new", {
         transaction: "newTransaction",
       })
       .then(() => {
