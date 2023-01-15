@@ -43,7 +43,6 @@
 This application is built using:
 
 * [![React][React.js]][React-url]
-* [![Python][Python.py]][Python-url]
 * [![Flask][Flask.lib]][Flask-url]
 
 ### Hosted Version 
