@@ -44,7 +44,7 @@ This application is built using:
 
 * [![React][React.js]][React-url]
 * [![Python][Python.py]][Python-url]
-
+* [![Flask][Flask.lib]][Flask-url]
 
 ### Hosted Version 
 http://blockchain.battat.lol/
@@ -109,10 +109,10 @@ The reload button in the top-right corner, is used to reset all the blocks and s
   </a>
 </div>
 		
- * <b>Block</b> contents : 
+ * Finally , here are the contents of a <b>Block</b> : 
  	```sh
  	- Index [ To indicate the block order in the blockchain ]
-    - A Hash [ Represents the current block Hash ]
+    - Hash [ Represents the current block Hash ]
     - Previous hash [ The previous block Hash ]
     - Nonce [ Is used ensure that each block has a unique hash ]
    ```
@@ -130,6 +130,6 @@ The reload button in the top-right corner, is used to reset all the blocks and s
 [React-url]: https://reactjs.org/
 [Python.py]: https://img.shields.io/badge/Python-282A3A?style=for-the-badge&logo=python&logoColor=5DA7DB
 [Python-url]: https://www.python.org/
-[Flask.py]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=C1C1C1
+[Flask.lib]: https://img.shields.io/badge/Flask-1A1A1A?style=for-the-badge&logo=flask&logoColor=C1C1C1
 [Flask-url]: https://flask.palletsprojects.com/en/2.2.x/
 
