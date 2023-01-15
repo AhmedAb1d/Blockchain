@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   background-color: #EBE9E9;
   border-radius: 7px;
-  height: 500px;
+  height: auto;
   padding: 20px;
   margin: 3%;
   overflow-y: scroll;
