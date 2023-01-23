@@ -23,26 +23,27 @@ jobs:
     - name: Build React application
       run: |      
         cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/frontend && npm run build
+        
   build-backend:
     name: Build Backend
     runs-on: self-hosted
     strategy:
-      fail-fast: false
       matrix:
         python-version: ["3.10"]
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Run the app
-      run: |      
-        cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/backend && pip install -r requirements.txt
-        pm2 restart Blocky
+    - name: Install Flask dependencies
+      run: cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/backend && pip install -r requirements.txt
+        
+  run-app:
+    name: Deploy app
+    runs-on: self-hosted
+    needs: [build-frontend, build-backend]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Reload PM2 
+      run: pm2 restart Blocky
