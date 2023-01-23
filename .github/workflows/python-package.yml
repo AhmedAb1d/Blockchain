@@ -18,7 +18,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Flask dependencies
-      run: cd /var/servers/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/backend && pip install -r requirements.txt
+      run: cd /var/servers/blockchain/_work/Blockchain/Blockchain/backend && pip install -r requirements.txt
       
   build-frontend:
     name: Build Frontend
@@ -34,10 +34,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install React dependencies
       run: |
-        cd /var/servers/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/frontend && npm ci
+        cd /var/servers/blockchain/_work/blockchain-app/Blockchain/Blockchain/frontend && npm ci
     - name: Build React application
       run: |      
-        cd /var/servers/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/frontend && npm run build --if-present
+        cd /var/servers/blockchain/_work/blockchain-app/Blockchain/Blockchain/frontend && npm run build --if-present
       
 #   run-app:
 #     name: Deploy app
