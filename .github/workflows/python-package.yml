@@ -38,4 +38,4 @@ jobs:
 #         pytest
     - name: Run the app
       run: |
-        cd ../Blockchain/Blockchain/backend && python3 Server.py
+        cd blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/backend && python3 Server.py
