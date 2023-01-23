@@ -5,6 +5,21 @@ on:
     branches: [ "master" ]
 
 jobs:
+  build-backend:
+    name: Build Backend
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Flask dependencies
+      run: cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/backend && pip install -r requirements.txt
+      
   build-frontend:
     name: Build Frontend
     runs-on: self-hosted
@@ -23,22 +38,7 @@ jobs:
     - name: Build React application
       run: |      
         cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/frontend && npm run build --if-present
-        
-  build-backend:
-    name: Build Backend
-    runs-on: self-hosted
-    strategy:
-      matrix:
-        python-version: ["3.10"]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install Flask dependencies
-      run: cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/backend && pip install -r requirements.txt
-        
+      
   run-app:
     name: Deploy app
     runs-on: self-hosted
