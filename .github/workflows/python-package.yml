@@ -39,11 +39,11 @@ jobs:
       run: |      
         cd /home/chloe/blockchain-w-gh-actions/blockchain-app/Blockchain/Blockchain/frontend && npm run build --if-present
       
-  run-app:
-    name: Deploy app
-    runs-on: self-hosted
-    needs: [build-frontend, build-backend]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Reload PM2 
-      run: pm2 restart Blocky
+#   run-app:
+#     name: Deploy app
+#     runs-on: self-hosted
+#     needs: [build-frontend, build-backend]
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Reload PM2 
+#       run: pm2 restart Blocky
